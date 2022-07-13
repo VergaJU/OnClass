@@ -1,4 +1,4 @@
-repo_dir = '/home/jacopo/Documents/GitHub/OnClass/OnClass'
+repo_dir = '/home/jacopo/Documents/GitHub/OnClass/test'
 data_dir = '/home/jacopo/Documents/GitHub/OnClass/OnClass_data_public'
 
 scrna_data_dir = data_dir + '/scRNA_data/'
@@ -11,5 +11,5 @@ model_dir = data_dir + '/Pretrained_model/'
 
 Run_scanorama_batch_correction = False
 NHIDDEN = [100]
-MAX_ITER = 10
+MAX_ITER = 100
 MEMORY_SAVING_MODE = True
