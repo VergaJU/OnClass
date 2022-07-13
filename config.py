@@ -1,5 +1,5 @@
-repo_dir = '/home/jacopoverga/Desktop/OnClass/OnClass'
-data_dir = '/home/jacopoverga/Desktop/OnClass/OnClass_data_public'
+repo_dir = '/home/jacopo/Documents/GitHub/OnClass/OnClass'
+data_dir = '/home/jacopo/Documents/GitHub/OnClass/OnClass_data_public'
 
 scrna_data_dir = data_dir + '/scRNA_data/'
 ontology_data_dir = data_dir + '/Ontology_data/'
