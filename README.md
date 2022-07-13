@@ -9,7 +9,7 @@ Create conda env using the file [OnClass_env.yml](env/OnClass_env.yml):
 conda env create -f OnClass_env.yml
 conda activate OnClass
 ```
-Install requirements:
+Conda doesn't manage to install correctly all the python packages, to ensure all the packages are installed in the correct version, install them using the file [requirements.txt](env/requirements.txt):
 
 ```
 pip install -r requirements
