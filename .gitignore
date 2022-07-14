@@ -2,3 +2,4 @@ test/
 OnClass_data_public/scRNA_data/Lemur/
 __pycache__/
 OnClass/__pycache__/
+Pretrained_model/
