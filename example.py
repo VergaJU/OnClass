@@ -5,13 +5,13 @@ import sys
 from collections import Counter
 from OnClass.OnClassModel import OnClassModel
 from utils import read_ontology_file, read_data, run_scanorama_multiply_datasets
-from config import ontology_data_dir, scrna_data_dir, model_dir, Run_scanorama_batch_correction, NHIDDEN, MAX_ITER
-train_file = scrna_data_dir + '/Lemur/microcebusBernard.h5ad'
-test_file = scrna_data_dir + '/Lemur/microcebusAntoine.h5ad'
+from config import ontology_data_dir, scrna_data_dir, model_dir, result_dir, figure_dir, Run_scanorama_batch_correction, NHIDDEN, MAX_ITER
+train_file = scrna_data_dir + '/dataset/granja_red.h5ad'
+test_file = scrna_data_dir + '/dataset/COMPLETE_red_4.h5ad'
 
 train_label = 'cell_ontology_id'
 test_label = 'cell_ontology_id'
-model_path = model_dir + 'example_file_model'
+model_path = model_dir + 'granja_4k_model'
 
 # read data
 print ('read ontology data and initialize training model...')
@@ -36,14 +36,14 @@ test_feature = x.X.toarray()
 test_genes = np.array([x.upper() for x in x.var.index])
 
 # train the model
-if Run_scanorama_batch_correction:
-	train_feature, test_feature = run_scanorama_multiply_datasets([train_feature, test_feature], [train_genes, test_genes], scan_dim = 10)[1]
-	print (np.shape(train_feature), np.shape(test_feature))
+#if Run_scanorama_batch_correction:
+#	train_feature, test_feature = run_scanorama_multiply_datasets([train_feature, test_feature], [train_genes, test_genes], scan_dim = 10)[1]
+#	print (np.shape(train_feature), np.shape(test_feature))
 
 print ('generate pretrain model. Save the model to $model_path...')
 cor_train_feature, cor_test_feature, cor_train_genes, cor_test_genes = OnClass_train_obj.ProcessTrainFeature(train_feature, train_label, train_genes, test_feature = test_feature, test_genes = test_genes)
-OnClass_train_obj.BuildModel(ngene = len(cor_train_genes), nhidden = NHIDDEN)
-OnClass_train_obj.Train(cor_train_feature, train_label, save_model = model_path, max_iter = MAX_ITER)
+#OnClass_train_obj.BuildModel(ngene = len(cor_train_genes), nhidden = NHIDDEN)
+#OnClass_train_obj.Train(cor_train_feature, train_label, save_model = model_path, max_iter = MAX_ITER)
 
 print ('initialize test model. Load the model from $model_path...')
 OnClass_test_obj = OnClassModel(cell_type_nlp_emb_file = cell_type_nlp_emb_file, cell_type_network_file = cell_type_network_file)
@@ -53,5 +53,5 @@ OnClass_test_obj.BuildModel(ngene = None, use_pretrain = model_path)
 
 pred_Y_seen, pred_Y_all, pred_label = OnClass_test_obj.Predict(cor_test_feature, test_genes = cor_test_genes, use_normalize=False)
 pred_label_str = [OnClass_test_obj.i2co[l] for l in pred_label]
-#x.obs['OnClass_annotation_tree_based_ontology_ID'] = pred_label_str
-#x.write(scrna_data_dir + 'Pilot12.annotated.h5ad')
+x.obs['cell_ontology_id'] = pred_label_str
+x.write(scrna_data_dir + '/dataset/COMPLETE_red_4_annotated.h5ad')
