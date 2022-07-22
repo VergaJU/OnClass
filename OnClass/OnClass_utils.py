@@ -341,7 +341,7 @@ def process_expression(train_X, test_X, train_genes, test_genes):
 	index = np.sum(c2g, axis=1)>0
 	c2g = c2g[index, :]
 	train_genes = train_genes[index]
-	c2g = np.divide(c2g+1, np.sum(c2g, axis=0, keepdims=True)+1) * 10000 # added +1 to avoid zero-counts error, not sure right way to fix the problem
+	c2g = np.divide(c2g, np.sum(c2g, axis=0, keepdims=True)) * 10000
 	c2g = np.log2(c2g+1)
 	expr = np.sum(c2g, axis=1)
 	#total_set = total_set[np.logical_and(expr >= np.percentile(expr, 1), expr <= np.percentile(expr, 99)),]
