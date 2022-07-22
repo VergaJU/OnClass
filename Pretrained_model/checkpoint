@@ -1,2 +1,2 @@
-model_checkpoint_path: "/home/jacopo/Documents/GitHub/OnClass//Pretrained_model/granja_4k_model"
-all_model_checkpoint_paths: "/home/jacopo/Documents/GitHub/OnClass//Pretrained_model/granja_4k_model"
+model_checkpoint_path: "/home/jacopo/Documents/GitHub/OnClass//Pretrained_model/trania_model"
+all_model_checkpoint_paths: "/home/jacopo/Documents/GitHub/OnClass//Pretrained_model/trania_model"
