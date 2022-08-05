@@ -6,8 +6,8 @@ from collections import Counter
 from OnClass.OnClassModel import OnClassModel
 from utils import read_ontology_file, read_data, run_scanorama_multiply_datasets
 from config import ontology_data_dir, scrna_data_dir, model_dir, result_dir, figure_dir, Run_scanorama_batch_correction, NHIDDEN, MAX_ITER
-train_file = scrna_data_dir + '/trania/trania_OnClass.h5ad'
-test_file = scrna_data_dir + '/trania/COMPLETE_OnCLass.h5ad'
+train_file = scrna_data_dir + '/triana/triana_OnClass.h5ad'
+test_file = scrna_data_dir + '/trania/DATASET_OnClass.h5ad'
 
 train_label = 'cell_ontology_id'
 test_label = 'cell_ontology_id'
