@@ -10,6 +10,6 @@ figure_dir = repo_dir + '/result/Figure/'
 model_dir = data_dir + '/Pretrained_model/'
 
 Run_scanorama_batch_correction = False
-NHIDDEN = [100]
+NHIDDEN = [1000]
 MAX_ITER = 500
 MEMORY_SAVING_MODE = True
